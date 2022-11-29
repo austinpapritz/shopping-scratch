@@ -9,6 +9,8 @@ import { renderItems } from './render-utils.js';
 const addForm = document.querySelector('#add-form');
 const listDiv = document.querySelector('#list-div');
 
+const deleteBtn = document.querySelector('#delete-btn');
+
 /* Events */
 window.addEventListener('load', async () => {
     fetchItems();
@@ -29,6 +31,10 @@ addForm.addEventListener('submit', async (e) => {
     } else {
         listDiv.textContent = 'There was an error loading your list';
     }
+});
+
+deleteBtn.addEventListener('click', async () => {
+    console.log('click');
 });
 
 /* Display Functions */
