@@ -1,5 +1,5 @@
 /* Imports */
-import { addItem, fetchItems } from './fetch-utils.js';
+import { addItem, deleteAllItems, fetchItems } from './fetch-utils.js';
 
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
@@ -34,7 +34,8 @@ addForm.addEventListener('submit', async (e) => {
 });
 
 deleteBtn.addEventListener('click', async () => {
-    console.log('click');
+    await deleteAllItems();
+    displayItems();
 });
 
 /* Display Functions */

@@ -40,3 +40,8 @@ export async function fetchItems() {
     const response = await client.from('list').select('*').match({ userID: getUser().id });
     return response.data;
 }
+
+export async function deleteAllItems() {
+    const response = await client.from('list').delete().match({ userID: getUser().id });
+    return response;
+}
