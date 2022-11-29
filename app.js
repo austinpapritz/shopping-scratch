@@ -1,5 +1,5 @@
 /* Imports */
-import { addItem, deleteAllItems, fetchItems } from './fetch-utils.js';
+import { addItem, completeItem, deleteAllItems, fetchItems } from './fetch-utils.js';
 
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
@@ -47,6 +47,9 @@ async function displayItems() {
     if (items) {
         for (let item of items) {
             const itemEl = renderItems(item);
+            itemEl.addEventListener('click', async () => {
+                await completeItem(item.id);
+            });
             listDiv.append(itemEl);
         }
     }

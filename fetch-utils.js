@@ -45,3 +45,8 @@ export async function deleteAllItems() {
     const response = await client.from('list').delete().match({ userID: getUser().id });
     return response;
 }
+
+export async function completeItem(id) {
+    const response = await client.from('list').update({ checked: true }).match({ id: id });
+    return response.data;
+}
