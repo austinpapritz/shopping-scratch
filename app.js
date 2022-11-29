@@ -3,9 +3,12 @@
 import './auth/user.js';
 
 /* Get DOM Elements */
-
-/* State */
+const addForm = document.querySelector('#add-form');
 
 /* Events */
+
+addForm.addEventListener('click', (e) => {
+    e.preventDefault();
+});
 
 /* Display Functions */
