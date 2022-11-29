@@ -22,16 +22,20 @@ addForm.addEventListener('submit', async (e) => {
 
     const newItem = await addItem(item);
 
-    // if (newItem) {
-    //     displayItems();
-    // } else {
-    //     listDiv.textContent = 'There was an error loading your list';
-    // }
+    if (newItem) {
+        displayItems();
+    } else {
+        listDiv.textContent = 'There was an error loading your list';
+    }
 });
 
 /* Display Functions */
 
-// async function displayItems() {
-//     listDiv.innerHTML = '';
-//     let
-// }
+async function displayItems() {
+    listDiv.innerHTML = '';
+
+    let items = await fetchItems();
+    if (items) {
+        for (let item of items) console.log(item);
+    }
+}

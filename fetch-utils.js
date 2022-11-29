@@ -38,6 +38,5 @@ export async function addItem(item) {
 
 export async function fetchItems() {
     const response = await client.from('list').select('*').match({ userID: getUser().id });
-    console.log(response.data, 'fetchItems');
     return response.data;
 }
