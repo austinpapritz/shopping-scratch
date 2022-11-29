@@ -4,11 +4,18 @@ import './auth/user.js';
 
 /* Get DOM Elements */
 const addForm = document.querySelector('#add-form');
+const addIn = document.querySelector('#add-input');
+const addBtn = document.querySelector('#add-btn');
 
 /* Events */
 
-addForm.addEventListener('click', (e) => {
+addForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    const data = new FormData(addForm);
+    const item = data.get('item');
+    console.log(item, 'item');
+    addForm.reset();
 });
 
 /* Display Functions */
