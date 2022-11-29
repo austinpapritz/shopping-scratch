@@ -3,6 +3,7 @@ import { addItem, fetchItems } from './fetch-utils.js';
 
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
+import { renderItems } from './render-utils.js';
 
 /* Get DOM Elements */
 const addForm = document.querySelector('#add-form');
@@ -36,6 +37,9 @@ async function displayItems() {
 
     let items = await fetchItems();
     if (items) {
-        for (let item of items) console.log(item);
+        for (let item of items) {
+            const itemEl = renderItems(item);
+            console.log(itemEl);
+        }
     }
 }
