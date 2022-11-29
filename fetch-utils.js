@@ -28,3 +28,8 @@ export async function signOutUser() {
 }
 
 /* Data functions */
+
+export async function addItem(item) {
+    const response = await client.from('list').insert({ item });
+    return response;
+}

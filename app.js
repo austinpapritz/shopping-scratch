@@ -1,4 +1,6 @@
 /* Imports */
+import { addItem } from './fetch-utils.js';
+
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
 
@@ -14,8 +16,9 @@ addForm.addEventListener('submit', async (e) => {
 
     const data = new FormData(addForm);
     const item = data.get('item');
-    console.log(item, 'item');
     addForm.reset();
+
+    const newItem = await addItem(item);
 });
 
 /* Display Functions */
