@@ -1,5 +1,6 @@
-const SUPABASE_URL = '';
-const SUPABASE_KEY = '';
+const SUPABASE_URL = 'https://uqwstvnsesaenalrdjyp.supabase.co';
+const SUPABASE_KEY =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVxd3N0dm5zZXNhZW5hbHJkanlwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgxMDgwMjYsImV4cCI6MTk4MzY4NDAyNn0.bZ660DcBSXEiAg5PHlsCACk9kEfmD8_HYAnhjOB69Vo';
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 /* Auth related functions */
@@ -27,3 +28,25 @@ export async function signOutUser() {
 }
 
 /* Data functions */
+
+export async function addItem(item) {
+    const response = await client
+        .from('list')
+        .insert({ item, userID: client.auth.user().id, checked: false });
+    return response;
+}
+
+export async function fetchItems() {
+    const response = await client.from('list').select('*').match({ userID: getUser().id });
+    return response.data;
+}
+
+export async function deleteAllItems() {
+    const response = await client.from('list').delete().match({ userID: getUser().id });
+    return response;
+}
+
+export async function completeItem(id) {
+    const response = await client.from('list').update({ checked: true }).match({ id: id });
+    return response.data;
+}

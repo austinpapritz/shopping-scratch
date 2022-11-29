@@ -1,26 +1,118 @@
-## The Golden Rule:
+## README
 
-🦸 🦸‍♂️ `Stop starting and start finishing.` 🏁
+# Shopping List App
 
-If you work on more than one feature at a time, you are guaranteed to multiply your bugs and your anxiety.
+![wireframe](./assets/wireframe.png)
 
-## Making a plan
+## HTML
 
-1. **Make a drawing of your app. Simple "wireframes"**
-1. **Once you have a drawing, name the HTML elements you'll need to realize your vision**
-1. **For each HTML element ask: Why do I need this?**
-1. **Once we know _why_ we need each element, think about how to implement the "Why" as a "How"**
-1. **Find all the 'events' (user clicks, form submit, on load etc) in your app. Ask one by one, "What happens when" for each of these events. Does any state change?**
-1. **Think about how to validate each of your features according to a Definition of Done**
-1. **Consider what features _depend_ on what other features. Use this dependency logic to figure out what order to complete tasks.**
+See wireframe
 
-Additional considerations:
+## ORDER OF OPERATION
 
--   Ask: which of your HTML elements need to be hard coded, and which need to be dynamically generated?
--   Consider your data model.
-    -   What kinds of objects (i.e., Dogs, Friends, Todos, etc) will you need?
-    -   What are the key/value pairs?
-    -   What arrays might you need?
-    -   What needs to live in a persistence layer?
--   Is there some state we need to initialize?
--   Ask: should any of this work be abstracted into functions? (i.e., is the work complicated? can it be reused?)
+-   link supabase
+-   sign up, login, logout auth
+-   insert data into table
+-   display data
+-   interact with data
+
+## SUPABASE
+
+URL: https://uqwstvnsesaenalrdjyp.supabase.co
+
+KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVxd3N0dm5zZXNhZW5hbHJkanlwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgxMDgwMjYsImV4cCI6MTk4MzY4NDAyNn0.bZ660DcBSXEiAg5PHlsCACk9kEfmD8_HYAnhjOB69Vo
+
+Table Name: list
+
+columns: id, itemName, checked, userID
+
+## List Page Events
+
+checkAuth()
+
+-   redirect to login
+
+await logOut()
+
+fetchList()
+
+-   on load
+-   on submit
+-   on complete
+-   on delete
+
+displayList() (on load, on submit, on complete, on delete)
+
+-   on load
+-   on submit
+-   on complete
+-   on delete
+
+renderItems()
+
+-   on load
+-   on submit
+
+createItem()
+
+-   on submit
+
+checkItem(id)
+
+-   on click
+
+deleteAll()
+
+-   on delete
+
+## Auth Page Events
+
+signInForm
+
+```
+if (user) {
+
+location.replace('/');
+
+}
+```
+
+signUpForm
+
+```
+if (user) {
+
+location.replace('/');
+
+}
+```
+
+## Auth related fetch-utils
+
+getUser()
+
+```
+return client.auth.session() && client.auth.session().user;
+```
+
+checkAuth()
+
+```
+    const user = getUser();
+
+    if (!user) location.replace('../');
+```
+
+redirectIfLogginIn()
+
+signUpUser()
+
+signInUser()
+
+logOut()
+
+checkError({data, error})
+
+```
+return error ? console.error(error) : data;
+```

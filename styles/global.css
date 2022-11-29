@@ -69,3 +69,33 @@ main {
 .hidden {
     display: none;
 }
+
+#alpha-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid black 1px;
+    padding: 10px;
+}
+
+#list-div {
+    margin: 10px;
+    padding: 30px;
+}
+
+.x::before {
+    content: '☐ ';
+}
+
+.x:hover {
+    cursor: pointer;
+    color: coral;
+}
+
+.checkmark::before {
+    content: '✔️';
+}
+
+.checkmark {
+    text-decoration: line-through;
+}
