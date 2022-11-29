@@ -35,3 +35,9 @@ export async function addItem(item) {
         .insert({ item, userID: client.auth.user().id, checked: false });
     return response;
 }
+
+export async function fetchItems() {
+    const response = await client.from('list').select('*').match({ userID: getUser().id });
+    console.log(response.data, 'fetchItems');
+    return response.data;
+}

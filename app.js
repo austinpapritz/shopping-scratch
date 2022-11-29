@@ -1,15 +1,17 @@
 /* Imports */
-import { addItem } from './fetch-utils.js';
+import { addItem, fetchItems } from './fetch-utils.js';
 
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
 
 /* Get DOM Elements */
 const addForm = document.querySelector('#add-form');
-const addIn = document.querySelector('#add-input');
-const addBtn = document.querySelector('#add-btn');
+const listDiv = document.querySelector('#list-div');
 
 /* Events */
+window.addEventListener('load', async () => {
+    fetchItems();
+});
 
 addForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -18,7 +20,18 @@ addForm.addEventListener('submit', async (e) => {
     const item = data.get('item');
     addForm.reset();
 
-    await addItem(item);
+    const newItem = await addItem(item);
+
+    // if (newItem) {
+    //     displayItems();
+    // } else {
+    //     listDiv.textContent = 'There was an error loading your list';
+    // }
 });
 
 /* Display Functions */
+
+// async function displayItems() {
+//     listDiv.innerHTML = '';
+//     let
+// }
