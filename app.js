@@ -18,7 +18,7 @@ addForm.addEventListener('submit', async (e) => {
     const item = data.get('item');
     addForm.reset();
 
-    const newItem = await addItem(item);
+    await addItem(item);
 });
 
 /* Display Functions */
