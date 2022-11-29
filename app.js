@@ -12,6 +12,7 @@ const listDiv = document.querySelector('#list-div');
 /* Events */
 window.addEventListener('load', async () => {
     fetchItems();
+    displayItems();
 });
 
 addForm.addEventListener('submit', async (e) => {
@@ -39,7 +40,7 @@ async function displayItems() {
     if (items) {
         for (let item of items) {
             const itemEl = renderItems(item);
-            console.log(itemEl);
+            listDiv.append(itemEl);
         }
     }
 }
