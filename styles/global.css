@@ -83,3 +83,20 @@ main {
     margin: 10px;
     padding: 30px;
 }
+
+.x::before {
+    content: '☐ ';
+}
+
+.x:hover {
+    cursor: pointer;
+    color: coral;
+}
+
+.checkmark::before {
+    content: '✔️';
+}
+
+.checkmark {
+    text-decoration: line-through;
+}

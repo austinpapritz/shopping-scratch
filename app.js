@@ -49,6 +49,7 @@ async function displayItems() {
             const itemEl = renderItems(item);
             itemEl.addEventListener('click', async () => {
                 await completeItem(item.id);
+                await displayItems();
             });
             listDiv.append(itemEl);
         }
